@@ -1,0 +1,14 @@
+.data
+A:.word 0x11011010
+.text
+LDR R0,=A
+LDR R1,[R0]
+MOV R2,#0
+MOV R3,#0
+LOOP: MOVS R1,R1,LSL #1
+ADDCS R2,R2,#1
+CMP R1,#0
+BNE LOOP
+RSC R3,R2,#32
+SWI 0x1011
+.end
